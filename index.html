@@ -1,14 +1,20 @@
 <!DOCTYPE html>
 <html lang="es">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Dashboard de Análisis de Fútbol</title>
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-QWTKZyjpPEjISv5WaRU9O5sNl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-QWTKZyjpPEjISv5WaRU9O5sNl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM"
+        crossorigin="anonymous">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
     <link rel="stylesheet" href="css/style.css">
-    <link href="https://fonts.googleapis.com/css2?family=Oswald:wght@400;700&family=Roboto:wght@300;400;700&display=swap" rel="stylesheet">
+    <link
+        href="https://fonts.googleapis.com/css2?family=Oswald:wght@400;700&family=Roboto:wght@300;400;700&display=swap"
+        rel="stylesheet">
 </head>
+
 <body>
 
     <div class="sidebar" id="sidebar">
@@ -49,7 +55,8 @@
 
             <section id="resumen" class="mb-5">
                 <h2 class="text-center mb-4 text-secondary">Resumen General de la Liga</h2>
-                <p class="text-center lead text-muted">Explora los indicadores clave de rendimiento (KPIs) de la temporada actual. Estos datos te ofrecen una vista rápida de la dinámica general de la liga.</p>
+                <p class="text-center lead text-muted">Explora los indicadores clave de rendimiento (KPIs) de la
+                    temporada actual. Estos datos te ofrecen una vista rápida de la dinámica general de la liga.</p>
                 <div class="row g-4 justify-content-center">
                     <div class="col-sm-6 col-md-4 col-lg-3">
                         <div class="card text-center p-3 h-100 shadow-sm border-info">
@@ -78,7 +85,7 @@
                             </div>
                         </div>
                     </div>
-                     <div class="col-sm-6 col-md-4 col-lg-3">
+                    <div class="col-sm-6 col-md-4 col-lg-3">
                         <div class="card text-center p-3 h-100 shadow-sm border-danger">
                             <div class="card-body">
                                 <h3 class="card-title text-danger">Sorpresas (xPts)</h3>
@@ -94,96 +101,283 @@
 
             <section id="estadisticas">
                 <h2 class="text-center mb-4 text-secondary">Estadísticas Detalladas por Gráfica</h2>
-                <p class="text-center lead text-muted">Sumérgete en el análisis profundo de cada métrica clave. Cada gráfica te proporciona una visión específica sobre el rendimiento de los equipos.</p>
+                <p class="text-center lead text-muted">Sumérgete en el análisis profundo de cada métrica clave. Cada
+                    gráfica te proporciona una visión específica sobre el rendimiento de los equipos.</p>
                 <div class="charts-grid-container">
                     <div class="card h-100 shadow-sm dashboard-card">
                         <div class="card-body-content">
                             <h5 class="card-title text-center text-dark">Equilibrio Ofensivo-Defensivo (xG vs xGA)</h5>
-                            <small class="text-muted explanation-text d-block mb-3">Análisis del desempeño ofensivo (xG) vs. defensivo (xGA) promedio por equipo.</small>
+                            <small class="text-muted explanation-text d-block mb-3">Análisis del desempeño ofensivo (xG)
+                                vs. defensivo (xGA) promedio por equipo.</small>
                         </div>
-                        <a href="images/xg_vs_xga.png" class="gallery-item" data-title="Equilibrio Ofensivo-Defensivo (xG vs xGA)">
+                        <a href="images/xg_vs_xga.png" class="gallery-item"
+                            data-title="Equilibrio Ofensivo-Defensivo (xG vs xGA)">
                             <img src="images/xg_vs_xga.png" class="card-img-top img-fluid" alt="Gráfico xG vs xGA">
                         </a>
+                        <div>
+                            <h3 class="card-title text-center text-dark">Interpretacion</h3>
+                            <p class="text-muted explanation-text d-block mb-3">Compara el xG promedio (generación de
+                                ataque) con el xGA promedio (oportunidades
+                                defensivas concedidas) de cada
+                                equipo, dividiendo el gráfico en cuatro cuadrantes.</p>
+                            <ul class="text-muted explanation-text d-block mb-3">
+                                <li><b>Cuadrante Inferior Derecho (Mejor):</b> Alto xG, Bajo xGA. Equipos dominantes y
+                                    equilibrados (ej. Man City,
+                                    Bayern).</li>
+                                <li><b>Cuadrante Superior Derecho:</b> Alto xG, Alto xGA. Atacan mucho, pero también
+                                    conceden mucho (ej.
+                                    Hoffenheim).</li>
+                                <li><b>Cuadrante Inferior Izquierdo:</b> Bajo xG, Bajo xGA. Defienden bien, pero les
+                                    cuesta atacar (ej. Atlético
+                                    Madrid).</li>
+                                <li><b>Cuadrante Superior Izquierdo (Peor):</b> Bajo xG, Alto xGA. Les cuesta atacar y
+                                    conceden mucho (ej.
+                                    Huddersfield).</li>
+                                <li><b>Conclusión:</b> Permite clasificar a los equipos por su perfil de juego ofensivo
+                                    y defensivo.</li>
+                            </ul>
+                        </div>
                     </div>
 
                     <div class="card h-100 shadow-sm dashboard-card">
                         <div class="card-body-content">
-                            <h5 class="card-title text-center text-dark">Diferencia Puntos Reales vs Esperados (xPts)</h5>
-                            <small class="text-muted explanation-text d-block mb-3">Muestra la suerte de los equipos: Puntos Reales - Puntos Esperados.</small>
+                            <h5 class="card-title text-center text-dark">Diferencia Puntos Reales vs Esperados (xPts)
+                            </h5>
+                            <small class="text-muted explanation-text d-block mb-3">Muestra la suerte de los equipos:
+                                Puntos Reales - Puntos Esperados.</small>
                         </div>
-                        <a href="images/xpts_vs_pts.png" class="gallery-item" data-title="Diferencia Puntos Reales vs Esperados (xPts)">
-                            <img src="images/xpts_vs_pts.png" class="card-img-top img-fluid" alt="Gráfico Puntos Reales vs Esperados">
+                        <a href="images/xpts_vs_pts.png" class="gallery-item"
+                            data-title="Diferencia Puntos Reales vs Esperados (xPts)">
+                            <img src="images/xpts_vs_pts.png" class="card-img-top img-fluid"
+                                alt="Gráfico Puntos Reales vs Esperados">
                         </a>
+                        <div>
+                            <h3 class="card-title text-center text-dark">Interpretacion</h3>
+                            <p class="text-muted explanation-text d-block mb-3">Muestra la diferencia entre los puntos
+                                reales obtenidos y los puntos esperados (xPts) por
+                                cada equipo. Las barras
+                                verdes indican más puntos de los esperados ("suerte"), y las rojas, menos ("mala suerte"
+                                o ineficiencia).</p>
+                            <ul class="text-muted explanation-text d-block mb-3">
+                                <li><b>xPts:</b> Puntos que un equipo "debería" tener según la calidad de sus
+                                    oportunidades.</li>
+                                <li><b>Barras Verdes (positivas):</b> Equipos que rinden por encima de lo esperado (ej.
+                                    B. Monchengladbach, Atletico
+                                    Madrid).</li>
+                                <li><b>Barras Rojas (negativas):</b> Equipos que rinden por debajo de lo esperado (ej.
+                                    Brighton, Stuttgart).</li>
+                                <li><b>Conclusión:</b> Es clave para identificar equipos que han sido "afortunados" o
+                                    "desafortunados" en sus
+                                    resultados en relación con su rendimiento subyacente.</li>
+                            </ul>
+                        </div>
                     </div>
 
                     <div class="card h-100 shadow-sm dashboard-card">
                         <div class="card-body-content">
                             <h5 class="card-title text-center text-dark">Eficiencia Ofensiva (xG vs Goles Reales)</h5>
-                            <small class="text-muted explanation-text d-block mb-3">Relación entre goles esperados y reales, indicando la eficiencia de conversión.</small>
+                            <small class="text-muted explanation-text d-block mb-3">Relación entre goles esperados y
+                                reales, indicando la eficiencia de conversión.</small>
                         </div>
-                        <a href="images/xg_vs_goals.png" class="gallery-item" data-title="Eficiencia Ofensiva (xG vs Goles Reales)">
-                            <img src="images/xg_vs_goals.png" class="card-img-top img-fluid" alt="Gráfico xG vs Goles Reales">
+                        <a href="images/xg_vs_goals.png" class="gallery-item"
+                            data-title="Eficiencia Ofensiva (xG vs Goles Reales)">
+                            <img src="images/xg_vs_goals.png" class="card-img-top img-fluid"
+                                alt="Gráfico xG vs Goles Reales">
                         </a>
+
+                        <div>
+                            <h5 class="card-title text-center text-dark">Interpretacion</h5>
+                            <p class="text-muted explanation-text d-block mb-3">Compara los goles esperados (xG) de un
+                                equipo con sus goles reales marcados. El color
+                                indica eficiencia (verde=más
+                                eficiente, rojo=menos eficiente) y el tamaño el número de partidos.</p>
+                            <ul class="text-muted explanation-text d-block mb-3">
+                                <li><b>Línea Roja:</b> Goles Reales = xG (eficiencia neutra).</li>
+                                <li><b>Equipos Verdes (arriba de la línea):</b> Convierten más goles de lo esperado (ej.
+                                    Bayern, Man City, PSG). Son
+                                    muy eficientes o "afortunados".</li>
+                                <li><b>Equipos Rojos (debajo de la línea):</b> Convierten menos goles de lo esperado
+                                    (ej. Huddersfield, Brighton).
+                                    Necesitan mejorar su definición o tienen "mala suerte".</li>
+                                <li><b>Conclusión:</b> Permite identificar qué equipos son letales frente al gol
+                                    (verdes) y cuáles tienen problemas
+                                    para materializar sus ocasiones (rojos).</li>
+                            </ul>
+                        </div>
                     </div>
 
                     <div class="card h-100 shadow-sm dashboard-card">
                         <div class="card-body-content">
                             <h5 class="card-title text-center text-dark">Distribución de xG por Partido</h5>
-                            <small class="text-muted explanation-text d-block mb-3">Frecuencia de valores de xG en todos los partidos de la liga.</small>
+                            <small class="text-muted explanation-text d-block mb-3">Frecuencia de valores de xG en todos
+                                los partidos de la liga.</small>
                         </div>
-                        <a href="images/xg_distribution.png" class="gallery-item" data-title="Distribución de xG por Partido">
-                            <img src="images/xg_distribution.png" class="card-img-top img-fluid" alt="Gráfico Distribución de xG">
+                        <a href="images/xg_distribution.png" class="gallery-item"
+                            data-title="Distribución de xG por Partido">
+                            <img src="images/xg_distribution.png" class="card-img-top img-fluid"
+                                alt="Gráfico Distribución de xG">
                         </a>
+
+                        <div>
+                            <h5 class="card-title text-center text-dark">Interpretacion</h5>
+                            <p class="text-muted explanation-text d-block mb-3">Histograma que muestra la frecuencia de
+                                los valores de xG generados por partido en la
+                                liga, con una curva de
+                                densidad y la media.</p>
+                            <ul class="text-muted explanation-text d-block mb-3">
+                                <li><b>Eje X (xG):</b> Goles esperados por partido.</li>
+                                <li><b>Eje Y (Frecuencia):</b> Cuántos partidos tuvieron ese rango de xG.</li>
+                                <li><b>Media (Línea Roja):</b> 1.41 xG promedio por partido.</li>
+                                <li><b>Conclusión:</b> La distribución está <b>sesgada a la derecha</b>, indicando que
+                                    la mayoría de los partidos
+                                    tienen un xG moderado (entre 1.0 y 1.5), y es raro ver partidos con un xG muy alto.
+                                </li>
+                            </ul>
+                        </div>
                     </div>
 
                     <div class="card h-100 shadow-sm dashboard-card">
                         <div class="card-body-content">
                             <h5 class="card-title text-center text-dark">Relación Acciones Deep vs xG</h5>
-                            <small class="text-muted explanation-text d-block mb-3">Correlación entre el tiempo en campo rival y los goles esperados.</small>
+                            <small class="text-muted explanation-text d-block mb-3">Correlación entre el tiempo en campo
+                                rival y los goles esperados.</small>
                         </div>
                         <a href="images/deep_vs_xg.png" class="gallery-item" data-title="Relación Acciones Deep vs xG">
                             <img src="images/deep_vs_xg.png" class="card-img-top img-fluid" alt="Gráfico Deep vs xG">
                         </a>
+
+                        <div>
+                            <h5 class="card-title text-center text-dark">Interpretacion</h5>
+                            <p class="text-muted explanation-text d-block mb-3">Esta gráfica explora si los equipos con
+                                más posesión en campo rival (Acciones Deep)
+                                generan más goles esperados
+                                (xG). Los puntos muestran una <b>clara correlación positiva</b>: a mayor presencia
+                                ofensiva en zonas peligrosas,
+                                mayor la calidad y cantidad de oportunidades de gol creadas (xG).</p>
+                            <ul class="text-muted explanation-text d-block mb-3">
+                                <li><b>Eje X (Acciones Deep):</b> Cantidad de acciones en campo rival.</li>
+                                <li><b>Eje Y (xG esperado):</b> Calidad de las oportunidades de gol.</li>
+                                <li><b>Conclusión:</b> Más acciones ofensivas profundas se traducen en más y mejores
+                                    ocasiones de gol.</li>
+                            </ul>
+                        </div>
                     </div>
 
                     <div class="card h-100 shadow-sm dashboard-card">
                         <div class="card-body-content">
                             <h5 class="card-title text-center text-dark">Rendimiento Local vs Visitante (npxGD)</h5>
-                            <small class="text-muted explanation-text d-block mb-3">Comparación del diferencial de goles esperados sin penalti entre partidos en casa y fuera.</small>
+                            <small class="text-muted explanation-text d-block mb-3">Comparación del diferencial de goles
+                                esperados sin penalti entre partidos en casa y fuera.</small>
                         </div>
-                        <a href="images/home_away_diff.png" class="gallery-item" data-title="Rendimiento Local vs Visitante (npxGD)">
-                            <img src="images/home_away_diff.png" class="card-img-top img-fluid" alt="Gráfico Local vs Visitante">
+                        <a href="images/home_away_diff.png" class="gallery-item"
+                            data-title="Rendimiento Local vs Visitante (npxGD)">
+                            <img src="images/home_away_diff.png" class="card-img-top img-fluid"
+                                alt="Gráfico Local vs Visitante">
                         </a>
+
+                        <div>
+                            <h5 class="card-title text-center text-dark">Interpretacion</h5>
+                            <p class="text-muted explanation-text d-block mb-3">Compara el rendimiento promedio de los equipos en casa ("Local") y fuera ("Visitante")
+                                usando la métrica npxGD
+                                (Diferencial de Goles Esperados sin Penaltis).</p>
+                            <ul class="text-muted explanation-text d-block mb-3">
+                                <li><b>npxGD:</b> $npxG - npxGA$ (oportunidades creadas vs. concedidas, sin penaltis).
+                                    Positivo es bueno, negativo
+                                    es malo.</li>
+                                <li><b>Conclusión:</b> Los equipos muestran un <b>npxGD positivo como locales</b> (mejor
+                                    rendimiento) y <b>negativo
+                                        como visitantes</b> (peor rendimiento), confirmando la ventaja de jugar en casa.
+                                </li>
+                            </ul>
+                        </div>
                     </div>
 
                     <div class="card h-100 shadow-sm dashboard-card">
                         <div class="card-body-content">
                             <h5 class="card-title text-center text-dark">Evolución del xG Promedio (Temporada)</h5>
-                            <small class="text-muted explanation-text d-block mb-3">Tendencia del xG promedio a lo largo de la temporada, mostrando variaciones mensuales.</small>
+                            <small class="text-muted explanation-text d-block mb-3">Tendencia del xG promedio a lo largo
+                                de la temporada, mostrando variaciones mensuales.</small>
                         </div>
-                        <a href="images/xg_trend.png" class="gallery-item" data-title="Evolución del xG Promedio (Temporada)">
+                        <a href="images/xg_trend.png" class="gallery-item"
+                            data-title="Evolución del xG Promedio (Temporada)">
                             <img src="images/xg_trend.png" class="card-img-top img-fluid" alt="Gráfico Evolución xG">
                         </a>
+
+                        <h3 class="card-title text-center text-dark">Interpretacion</h3>
+                        <p class="text-muted explanation-text d-block mb-3">Muestra la tendencia del xG promedio por
+                            partido a lo largo de los meses de varias
+                            temporadas.</p>
+                        <ul class="text-muted explanation-text d-block mb-3">
+                            <li><b>Eje X (Mes):</b> Tiempo a lo largo de las temporadas.</li>
+                            <li><b>Eje Y (xG Promedio):</b> xG promedio mensual.</li>
+                            <li><b>Conclusión:</b> El xG promedio <b>fluctúa significativamente</b> a lo largo del
+                                tiempo (entre 1.30 y 1.55),
+                                mostrando picos y valles que reflejan variaciones en la creación de juego a lo largo de
+                                la temporada.</li>
+                        </ul>
                     </div>
 
                     <div class="card h-100 shadow-sm dashboard-card">
                         <div class="card-body-content">
                             <h5 class="card-title text-center text-dark">Distribución de Resultados en la Liga</h5>
-                            <small class="text-muted explanation-text d-block mb-3">Porcentaje de Victorias, Empates y Derrotas en el dataset.</small>
+                            <small class="text-muted explanation-text d-block mb-3">Porcentaje de Victorias, Empates y
+                                Derrotas en el dataset.</small>
                         </div>
-                        <a href="images/result_distribution.png" class="gallery-item" data-title="Distribución de Resultados en la Liga">
-                            <img src="images/result_distribution.png" class="card-img-top img-fluid" alt="Gráfico Distribución Resultados">
+                        <a href="images/result_distribution.png" class="gallery-item"
+                            data-title="Distribución de Resultados en la Liga">
+                            <img src="images/result_distribution.png" class="card-img-top img-fluid"
+                                alt="Gráfico Distribución Resultados">
                         </a>
+
+                        <div>
+                            <h3 class="card-title text-center text-dark">Interpretacion</h3>
+                            <p class="text-muted explanation-text d-block mb-3">Histograma que muestra el porcentaje de
+                                Victorias ("w"), Derrotas ("l") y Empates ("d")
+                                en el dataset de la liga.
+                            </p>
+                            <ul class="text-muted explanation-text d-block mb-3">
+                                <li><b>Victorias (w):</b> Aproximadamente 37%.</li>
+                                <li><b>Derrotas (l):</b> Aproximadamente 37%.</li>
+                                <li><b>Empates (d):</b> Aproximadamente 25%.</li>
+                                <li><b>Conclusión:</b> La mayoría de los partidos tienen un ganador o perdedor, con los
+                                    empates siendo el resultado
+                                    menos frecuente, lo cual es típico en el fútbol.</li>
+                            </ul>
+                        </div>
                     </div>
 
                     <div class="card h-100 shadow-sm dashboard-card chart-full-width">
                         <div class="card-body-content">
                             <h5 class="card-title text-center text-dark">Matriz de Correlación de Métricas</h5>
-                            <small class="text-muted explanation-text d-block mb-3">Muestra cómo se relacionan entre sí diferentes métricas de juego (xG, xGA, deep, etc.).</small>
+                            <small class="text-muted explanation-text d-block mb-3">Muestra cómo se relacionan entre sí
+                                diferentes métricas de juego (xG, xGA, deep, etc.).</small>
                         </div>
-                        <a href="images/metrics_correlation.png" class="gallery-item" data-title="Matriz de Correlación de Métricas">
-                            <img src="images/metrics_correlation.png" class="card-img-top img-fluid" alt="Gráfico Matriz Correlación">
+                        <a href="images/metrics_correlation.png" class="gallery-item"
+                            data-title="Matriz de Correlación de Métricas">
+                            <img src="images/metrics_correlation.png" class="card-img-top img-fluid"
+                                alt="Gráfico Matriz Correlación">
                         </a>
+                        <div>
+                            <h3 class="card-title text-center text-dark">Interpretacion</h3>
+                            <p class="text-muted explanation-text d-block mb-3">Muestra la relación lineal (coeficiente
+                                de correlación de Pearson, de -1 a 1) entre
+                                diferentes métricas clave de
+                                juego (xG, xGA, deep, scored, missed). Rojo intenso = correlación positiva fuerte; Azul
+                                intenso = correlación
+                                negativa fuerte; Blanco = sin correlación lineal.</p>
+                            <ul class="text-muted explanation-text d-block mb-3">
+                                <li><b>xG con Scored (0.63):</b> Fuerte correlación positiva. El xG es un gran predictor
+                                    de goles reales.</li>
+                                <li><b>Deep con xG (0.53):</b> Correlación positiva moderada-fuerte. Estar en campo
+                                    rival genera más xG.</li>
+                                <li><b>xGA con Deep Allowed (0.53):</b> Fuerte correlación positiva. Permitir acciones
+                                    profundas al rival se
+                                    relaciona con conceder más xGA.</li>
+                                <li><b>Conclusión:</b> Permite entender cómo las métricas se influyen mutuamente,
+                                    validando el xG como predictor de
+                                    goles y destacando la importancia del control territorial.</li>
+                            </ul>
+                        </div>
                     </div>
 
                 </div>
@@ -194,10 +388,11 @@
         </div>
 
         <footer id="acerca" class="bg-dark text-white-50 py-4 mt-5">
-            <div class="container text-center dashboard-container">
+            <div>
                 <p class="mb-1">&copy; 2025 Dashboard de Análisis de Fútbol. Todos los derechos reservados.</p>
-                <p class="mb-0">Desarrollado con datos de código abierto y <a href="https://getbootstrap.com/" class="text-white-50 text-decoration-none">Bootstrap</a>.</p>
-                </div>
+                <p class="mb-0">Desarrollado con datos de código abierto y <a href="https://getbootstrap.com/"
+                        class="text-white-50 text-decoration-none">Bootstrap</a>.</p>
+            </div>
         </footer>
     </div>
 
@@ -211,8 +406,10 @@
         </div>
     </div>
 
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eP7N6jIeHz" crossorigin="anonymous"></script>
-    
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eP7N6jIeHz"
+        crossorigin="anonymous"></script>
+
     <script src="https://unpkg.com/pinch-zoom-js@2.3.0/dist/pinch-zoom.min.js"></script>
 
     <script>
@@ -349,7 +546,7 @@
             });
 
             // JavaScript para la barra lateral (Desktop y Móvil)
-            
+
             // Lógica para el botón dentro de la sidebar (sirve para desktop y para cerrar en móvil)
             sidebarToggleDesktop.addEventListener('click', () => {
                 if (window.innerWidth >= 992) { // Lógica para desktop
@@ -376,14 +573,15 @@
 
             // Para asegurar el estado inicial correcto en desktop
             if (window.innerWidth >= 992) {
-                 sidebar.classList.remove('collapsed');
-                 mainContent.classList.remove('sidebar-collapsed');
+                sidebar.classList.remove('collapsed');
+                mainContent.classList.remove('sidebar-collapsed');
             } else {
-                 sidebar.classList.add('collapsed'); // Por si acaso para que no haya conflicto visual
-                 mainContent.classList.remove('sidebar-collapsed'); // No aplica margen en móvil
+                sidebar.classList.add('collapsed'); // Por si acaso para que no haya conflicto visual
+                mainContent.classList.remove('sidebar-collapsed'); // No aplica margen en móvil
             }
 
         });
     </script>
 </body>
+
 </html>
