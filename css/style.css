@@ -1,0 +1,799 @@
+/* Fuentes de Google: Importa estas en tu HTML en la sección <head> o al inicio de tu CSS */
+@import url('https://fonts.googleapis.com/css2?family=Oswald:wght@400;700&family=Roboto:wght@300;400;700&display=swap');
+
+
+/* Estilos globales */
+body {
+    /* Paleta de colores:
+       Primario Oscuro: #1A2E44 (Azul marino profundo)
+       Acento 1 (Éxito/Fútbol): #4CAF50 (Verde césped)
+       Acento 2 (Alerta/Oro): #FFD700 (Amarillo oro)
+       Texto Oscuro: #E0E0E0 (Gris claro para texto)
+       Texto Claro: #FFFFFF (Blanco puro)
+       Fondo General: #0D1B2A (Azul casi negro)
+    */
+    font-family: 'Roboto', sans-serif; /* Fuente principal: Roboto */
+    background-color: #0D1B2A; /* Fondo casi negro, oscuro y sofisticado */
+    color: #E0E0E0; /* Gris claro para el texto principal */
+    margin: 0;
+    padding: 0;
+    line-height: 1.6;
+    overflow-x: hidden; /* Previene scroll horizontal no deseado */
+    display: flex; /* Habilitar Flexbox para el layout principal en desktop */
+    min-height: 100vh; /* Asegura que el body ocupe al menos toda la altura de la ventana */
+}
+
+/* --- Estilos para la Barra Lateral (Sidebar) --- */
+.sidebar {
+    width: 250px; /* Ancho por defecto de la barra lateral */
+    min-width: 250px; /* Asegura que no se haga más pequeña */
+    background-color: #1A2E44; /* Azul marino profundo */
+    color: #E0E0E0;
+    padding: 20px 0;
+    position: fixed; /* Fija la barra lateral */
+    top: 0;
+    left: 0;
+    height: 100vh; /* Ocupa toda la altura de la ventana */
+    overflow-y: auto; /* Scroll si el contenido es muy largo */
+    transition: all 0.3s ease-in-out; /* Transición suave para colapsar */
+    z-index: 1000; /* Asegura que esté por encima de otros elementos, pero debajo del lightbox */
+    box-shadow: 2px 0 10px rgba(0, 0, 0, 0.3); /* Sombra sutil a la derecha */
+    display: flex;
+    flex-direction: column;
+}
+
+.sidebar.collapsed {
+    width: 70px; /* Ancho cuando está colapsada */
+    min-width: 70px;
+    padding: 20px 0; /* Mantiene padding para el botón y posible icono */
+}
+
+.sidebar-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0 15px 20px 15px; /* Ajustado para mejor espaciado */
+    border-bottom: 1px solid rgba(255, 255, 255, 0.08); /* Separador sutil */
+    margin-bottom: 20px;
+    position: relative; /* Necesario para que el toggle sea parte del flujo y se esconda con el texto */
+    overflow: hidden; /* Asegura que no haya desbordamiento del logo */
+    min-height: 40px; /* Altura mínima para el header */
+}
+
+.sidebar-brand {
+    color: #4CAF50 !important;
+    font-family: 'Oswald', sans-serif;
+    font-size: 1.5rem;
+    text-decoration: none;
+    display: flex;
+    align-items: center;
+    gap: 8px; /* Espacio entre icono y texto */
+    white-space: nowrap; /* Evita que el texto se rompa */
+    transition: opacity 0.3s ease, transform 0.3s ease; /* Transición para ocultar el logo */
+    position: absolute; /* Para controlar su posición y ocultarlo */
+    left: 15px;
+}
+
+.sidebar-brand .fa-futbol {
+    font-size: 1.8rem;
+}
+
+.sidebar.collapsed .sidebar-brand {
+    opacity: 0; /* Oculta completamente el logo */
+    transform: translateX(-100%); /* Lo mueve fuera de la vista */
+    pointer-events: none; /* Deshabilita clics */
+}
+
+/* Botón de toggle DENTRO de la sidebar header (se usa para desktop y para cerrar en móvil) */
+.sidebar-header .sidebar-toggle {
+    background: none;
+    border: none;
+    color: #E0E0E0;
+    font-size: 1.5rem;
+    cursor: pointer;
+    padding: 5px;
+    border-radius: 5px;
+    transition: color 0.2s ease, background-color 0.2s ease;
+    position: absolute; /* Posiciona el botón para que se mantenga visible */
+    right: 15px;
+    top: 50%;
+    transform: translateY(-50%);
+    z-index: 10; /* Asegura que esté por encima de cualquier otro contenido en el header */
+}
+
+.sidebar.collapsed .sidebar-header .sidebar-toggle {
+    right: 50%; /* Centra el botón cuando la barra está colapsada */
+    transform: translate(50%, -50%); /* Ajuste fino para centrarlo */
+}
+
+.sidebar-header .sidebar-toggle:hover {
+    color: #FFD700;
+    background-color: rgba(255, 255, 255, 0.08);
+}
+
+
+.sidebar-nav {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    flex-grow: 1; /* Permite que la lista ocupe el espacio restante */
+}
+
+.sidebar-nav .nav-item {
+    margin-bottom: 5px;
+}
+
+.sidebar-nav .nav-link {
+    display: flex;
+    align-items: center;
+    padding: 12px 15px;
+    color: #C0C0C0;
+    text-decoration: none;
+    font-size: 1rem;
+    transition: background-color 0.2s ease, color 0.2s ease;
+    border-radius: 5px;
+    margin: 0 10px; /* Margen horizontal para centrar un poco */
+    white-space: nowrap; /* Evita que el texto se rompa */
+    overflow: hidden; /* Para ocultar el texto al colapsar */
+}
+
+.sidebar-nav .nav-link:hover {
+    background-color: rgba(76, 175, 80, 0.1); /* Verde sutil al pasar el ratón */
+    color: #FFD700;
+}
+
+.sidebar-nav .nav-link.active {
+    background-color: #4CAF50; /* Verde césped para el activo */
+    color: #FFFFFF;
+    font-weight: 700;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+}
+
+.sidebar-nav .nav-link .fas {
+    font-size: 1.2rem;
+    width: 30px; /* Ancho fijo para el icono */
+    text-align: center;
+    margin-right: 10px;
+    transition: margin-right 0.3s ease-in-out, width 0.3s ease-in-out;
+}
+
+.sidebar.collapsed .sidebar-nav .nav-link .fas {
+    margin-right: 0; /* Elimina el margen derecho al colapsar */
+    width: 100%; /* El icono ocupa todo el ancho disponible */
+}
+
+.sidebar.collapsed .nav-text {
+    display: none; /* Oculta el texto de los enlaces al colapsar */
+}
+
+/* --- Contenido Principal (Main Content) --- */
+.main-content {
+    margin-left: 250px; /* Margen para dejar espacio a la barra lateral */
+    flex-grow: 1; /* Permite que ocupe el espacio restante */
+    transition: all 0.3s ease-in-out; /* Transición suave para ajustar margen */
+}
+
+.main-content.sidebar-collapsed {
+    margin-left: 70px; /* Margen cuando la barra lateral está colapsada */
+}
+
+/* Contenedor principal del dashboard */
+.dashboard-container {
+    background-color: #1A2E44; /* Azul marino profundo como fondo del contenedor */
+    border-radius: 15px; /* Más redondeado, estilo moderno */
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3); /* Sombra más pronunciada para profundidad */
+    margin: 50px auto; /* Mantener margen auto para centrar horizontalmente */
+    max-width: 1400px;
+    padding: 40px;
+    box-sizing: border-box;
+    border: 1px solid rgba(255, 255, 255, 0.05); /* Borde sutil para resaltar */
+}
+
+/* Título principal del dashboard */
+h1 {
+    font-family: 'Oswald', sans-serif; /* Fuente impactante para títulos */
+    font-weight: 700;
+    color: #4CAF50; /* Verde césped vibrante */
+    margin-bottom: 2.5rem;
+    font-size: 3.5rem; /* Título aún más grande */
+    text-align: center;
+    line-height: 1.1;
+    text-shadow: 2px 2px 5px rgba(0, 0, 0, 0.3); /* Sombra de texto sutil */
+}
+
+/* Títulos de sección (h2) */
+h2 {
+    font-family: 'Oswald', sans-serif;
+    font-weight: 700;
+    color: #FFD700; /* Amarillo oro para los títulos de sección */
+    margin-bottom: 2rem;
+    font-size: 2.5rem;
+    text-align: center;
+    line-height: 1.2;
+}
+
+/* Estilos para las tarjetas de las gráficas */
+.dashboard-card {
+    border: 1px solid rgba(255, 255, 255, 0.1); /* Borde más claro y sutil */
+    border-radius: 12px;
+    transition: transform 0.3s ease-in-out, box-shadow 0.3s ease-in-out;
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+    overflow: hidden;
+    background-color: #243B55; /* Un azul más claro para las tarjetas */
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2); /* Sombra de tarjeta inicial */
+}
+
+.dashboard-card:hover {
+    transform: translateY(-10px); /* Efecto al pasar el ratón más pronunciado */
+    box-shadow: 0 18px 35px rgba(0, 0, 0, 0.4), 0 0 0 3px #4CAF50; /* Sombra más fuerte y borde verde al hover */
+}
+
+/* Contenedor para el título y la explicación de la tarjeta */
+.card-body-content {
+    padding: 25px;
+    flex-shrink: 0;
+    background-color: #2D435C; /* Un azul un poco más claro para el contenido del texto de la tarjeta */
+    border-bottom: 1px solid rgba(255, 255, 255, 0.08); /* Separador sutil */
+}
+
+/* Imagen de la gráfica */
+.dashboard-card .card-img-top {
+    border-radius: 0 0 12px 12px; /* Redondear solo las esquinas inferiores */
+    object-fit: contain; /* Asegura que la imagen se escale sin distorsión */
+    max-height: 480px; /* Tamaño generoso para gráficas */
+    width: 100%;
+    padding: 25px; /* Padding dentro del área de la imagen */
+    background-color: #384D67; /* Un azul más oscuro para el fondo de la imagen */
+    flex-grow: 1; /* Permite que la imagen ocupe el espacio restante */
+    display: block; /* Asegura que la imagen se comporte como un bloque */
+    margin: auto; /* Centra la imagen horizontalmente si es más pequeña que su contenedor */
+}
+
+/* Estilos para el título dentro de la tarjeta */
+.card-title {
+    font-family: 'Oswald', sans-serif; /* Título de tarjeta también con Oswald */
+    font-size: 1.7rem;
+    font-weight: 600;
+    margin-bottom: 0.4rem; /* AJUSTE: REDUCIDO */
+    line-height: 1.3;
+    color: #FFD700;
+    text-align: center;
+    text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.2);
+}
+
+/* Estilos para la explicación */
+.explanation-text {
+    font-size: 1.05rem;
+    color: #A0A0A0; /* Gris más oscuro para la explicación */
+    text-align: center;
+    line-height: 1.6;
+    padding: 0 20px;
+    margin-top: 5px; /* AJUSTE: Puedes ajustar este valor */
+    margin-bottom: 10px; /* AJUSTE: Puedes ajustar este valor */
+}
+
+/* Ocultar el footer si no se usa (esto es una clase de Bootstrap, si está en el HTML) */
+.dashboard-card .card-footer {
+    display: none;
+}
+
+
+/* --- Estilos para la Sección de Resumen General / KPIs --- */
+#resumen h2 {
+    color: #FFD700;
+}
+#resumen .lead {
+    color: #C0C0C0;
+}
+#resumen .card {
+    background-color: #243B55;
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+    transition: transform 0.3s ease-in-out, box-shadow 0.3s ease-in-out;
+    text-align: center;
+}
+#resumen .card-body {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    height: 100%;
+}
+#resumen .card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.3);
+}
+#resumen .card-title {
+    font-family: 'Roboto', sans-serif;
+    font-weight: 700;
+    font-size: 1.3rem;
+    line-height: 1.2;
+    color: #FFD700;
+    margin-bottom: 0.5rem;
+}
+#resumen .display-5 {
+    font-family: 'Oswald', sans-serif;
+    font-weight: 700;
+    font-size: 3.5rem;
+    margin-bottom: 0; /* AJUSTADO */
+    line-height: 1; /* AJUSTADO */
+    padding-top: 5px; /* AJUSTADO: Opcional, para evitar que se pegue al borde superior */
+}
+/* Colores específicos para los KPI */
+#resumen .border-info { border-color: #4CAF50 !important; }
+#resumen .text-info { color: #4CAF50 !important; }
+#resumen .border-success { border-color: #FFD700 !important; }
+#resumen .text-success { color: #FFD700 !important; }
+#resumen .border-warning { border-color: #E0E0E0 !important; }
+#resumen .text-warning { color: #E0E0E0 !important; }
+#resumen .border-danger { border-color: #F44336 !important; }
+#resumen .text-danger { color: #F44336 !important; }
+#resumen .card-text {
+    color: #A0A0A0;
+    font-size: 0.9rem;
+    margin-top: 5px; /* AJUSTE: Puedes ajustar este valor */
+}
+
+/* Sección de Estadísticas Detalladas (Ajuste de margen superior) */
+#estadisticas {
+    margin-top: 3rem;
+}
+
+/* --- ESTILOS CSS GRID PARA LAS GRÁFICAS --- */
+.charts-grid-container {
+    display: grid;
+    /* Por defecto, una columna para móviles */
+    grid-template-columns: 1fr;
+    gap: 1.5rem; /* Espaciado entre las tarjetas, equivalente a Bootstrap g-4 */
+    padding: 0;
+}
+
+/* Para pantallas medianas (md y superior, ~768px) - 2 columnas */
+@media (min-width: 768px) {
+    .charts-grid-container {
+        grid-template-columns: repeat(2, 1fr); /* Dos columnas de igual ancho */
+    }
+}
+
+/* Para pantallas grandes (lg y superior, ~992px) - También 2 columnas, pero la última ocupa todo */
+@media (min-width: 992px) {
+    .charts-grid-container {
+        grid-template-columns: repeat(2, 1fr); /* Dos columnas de igual ancho */
+    }
+
+    /* La última gráfica ocupa todo el ancho */
+    .charts-grid-container .chart-full-width {
+        grid-column: 1 / -1; /* Ocupa desde la primera hasta la última línea de columna */
+        justify-self: center; /* Centra el elemento si no ocupa todo el espacio */
+        max-width: 800px; /* Para que la gráfica no se estire demasiado en pantallas muy grandes */
+        width: 100%; /* Asegura que tome el 100% del espacio asignado por grid-column */
+    }
+}
+
+/* --- Estilos para la Sección Acerca de / Información --- */
+#acerca {
+    background-color: #1A2E44 !important;
+    border: 1px solid rgba(255, 255, 255, 0.05);
+    box-shadow: 0 6px 20px rgba(0, 0, 0, 0.2);
+}
+#acerca h2 {
+    color: #4CAF50;
+}
+#acerca p {
+    color: #C0C0C0;
+}
+
+/* --- Estilos para el Footer --- */
+footer {
+    background-color: #0D1B2A !important;
+    border-top: 1px solid rgba(255, 255, 255, 0.05);
+    padding: 20px;
+    text-align: center;
+}
+footer p {
+    color: #A0A0A0;
+}
+footer a {
+    color: #4CAF50 !important;
+    text-decoration: none;
+}
+footer a:hover {
+    color: #FFD700 !important;
+    text-decoration: underline;
+}
+
+/* --- Media Queries para Responsividad (adaptados para funcionar con Grid y Sidebar) --- */
+
+/* Para pantallas muy grandes (mayor a 1600px) */
+@media (min-width: 1600px) {
+    .dashboard-container {
+        max-width: 1600px;
+        padding: 50px;
+    }
+}
+
+/* Ajustes generales para tablets y pantallas medianas (768px a 1199px) */
+@media (max-width: 1199px) {
+    h1 {
+        font-size: 3rem;
+        margin-bottom: 3rem;
+    }
+    h2 {
+        font-size: 2.2rem;
+    }
+    .dashboard-container {
+        margin: 30px auto;
+        padding: 30px;
+        max-width: 96%;
+    }
+    .card-title {
+        font-size: 1.5rem;
+    }
+    .explanation-text {
+        font-size: 0.95rem;
+    }
+    .dashboard-card .card-img-top {
+        max-height: 380px;
+    }
+    #resumen .display-5 {
+        font-size: 3rem;
+    }
+}
+
+/* Ajustes para móviles y pantallas pequeñas (hasta 991.98px) */
+@media (max-width: 991.98px) {
+    body {
+        display: block; /* Vuelve a block para mejor control del posicionamiento offcanvas */
+        padding-top: 70px; /* Espacio fijo para el botón de toggle en la parte superior */
+    }
+
+    .sidebar {
+        position: fixed;
+        top: 0;
+        left: -280px; /* Oculta la sidebar expandida fuera de la pantalla */
+        width: 280px; /* Ancho para el estado expandido en móvil */
+        min-width: 280px;
+        padding-top: 80px; /* Espacio para el header fijo dentro de la sidebar */
+        z-index: 1060; /* Asegura que esté por encima de todo */
+        box-shadow: none; /* Elimina la sombra cuando está oculta */
+        visibility: hidden;
+        opacity: 0;
+    }
+
+    body.sidebar-open .sidebar {
+        left: 0; /* Muestra la sidebar */
+        box-shadow: 2px 0 10px rgba(0, 0, 0, 0.4);
+        visibility: visible;
+        opacity: 1;
+    }
+
+    /* En móvil, la clase .collapsed no se usa para el estado de "solo íconos" fijo off-canvas */
+    .sidebar.collapsed { /* Resetear para móvil si accidentalmente se mantiene */
+        width: 280px;
+        min-width: 280px;
+        left: -280px;
+    }
+
+
+    .sidebar-header {
+        position: absolute; /* Posiciona el header de la sidebar por encima del padding-top */
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 80px; /* Altura fija para el header móvil */
+        background-color: #1A2E44; /* Fondo para que no se vea el scroll debajo */
+        padding: 15px; /* Padding ajustado */
+        box-sizing: border-box;
+        border-bottom: 1px solid rgba(255, 255, 255, 0.15);
+        z-index: 10; /* Asegura que esté por encima del contenido de la sidebar */
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+    }
+
+    .sidebar-brand {
+        font-size: 1.4rem; /* Tamaño de fuente un poco más pequeño en móvil */
+        opacity: 1; /* Asegura visibilidad */
+        transform: translateX(0); /* Resetea la transformación de ocultamiento */
+        position: static; /* Vuelve a la posición estática dentro del flexbox */
+        transition: opacity 0.3s ease, transform 0.3s ease;
+    }
+
+    /* EL BOTÓN DE CERRAR DENTRO DEL HEADER DE LA SIDEBAR (PARA CERRAR EL OFF-CANVAS) */
+    .sidebar-header .sidebar-toggle {
+        display: block; /* Asegura que este botón sea visible */
+        position: static; /* No flotante, es parte del flexbox */
+        transform: translateY(0);
+        margin-left: auto; /* Empuja el botón a la derecha */
+        margin-right: 0;
+        font-size: 2rem; /* Hazlo más grande para que sea fácil de tocar */
+        padding: 0; /* Quita padding extra si el icono ya es grande */
+        color: #FFD700; /* Color distintivo para cerrar */
+    }
+
+    /* El NUEVO botón de toggle para móvil (visible solo en pantallas pequeñas) */
+    #mobileSidebarToggle {
+        display: block; /* Siempre visible en móvil */
+        position: fixed;
+        top: 15px;
+        left: 15px;
+        z-index: 1070;
+        background-color: #1A2E44;
+        border-radius: 5px;
+        padding: 8px 12px;
+        box-shadow: 0 2px 5px rgba(0, 0, 0, 0.3);
+        transition: left 0.3s ease-in-out; /* Transición para mover el botón */
+        color: #E0E0E0;
+        font-size: 1.5rem;
+        border: none;
+        cursor: pointer;
+    }
+
+    /* Mueve el botón de toggle principal CUANDO LA SIDEBAR ESTÁ ABIERTA */
+    body.sidebar-open #mobileSidebarToggle {
+        left: 295px; /* Mueve el botón al lado de la sidebar abierta (280px + 15px de margen) */
+    }
+
+
+    .sidebar-nav .nav-link {
+        margin: 0; /* Elimina el margen horizontal */
+        border-radius: 0; /* Esquinas no redondeadas en móvil */
+        padding: 15px 20px; /* Más padding para un mejor toque */
+        font-size: 1.05rem;
+    }
+
+    .sidebar-nav .nav-link .fas {
+        margin-right: 15px; /* Restaura el margen para el icono */
+        width: auto; /* Permite que el icono se ajuste */
+    }
+
+
+    .main-content {
+        margin-left: 0; /* Elimina el margen en pantallas pequeñas */
+        width: 100%; /* Ocupa todo el ancho */
+    }
+
+    .main-content.sidebar-collapsed {
+        /* No hay cambio de margen aquí, ya que la sidebar se superpone */
+        margin-left: 0;
+    }
+
+    /* Overlay para cuando la sidebar está abierta en móvil */
+    .overlay {
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background: rgba(0, 0, 0, 0.6); /* Un poco más oscuro */
+        z-index: 1059; /* Entre el toggle y la sidebar */
+        display: none; /* Oculto por defecto, se muestra con JS */
+        cursor: pointer;
+        opacity: 0; /* Para la transición de fade */
+        transition: opacity 0.3s ease;
+    }
+    body.sidebar-open .overlay { /* Se necesita una clase en el body para controlar el overlay */
+        display: block;
+        opacity: 1;
+    }
+
+
+    /* Ajustes para el contenedor principal en móvil */
+    .dashboard-container {
+        margin: 0;
+        padding: 15px;
+        max-width: 100%;
+        border-radius: 0;
+        box-shadow: none;
+    }
+    h1 {
+        font-size: 2.5rem;
+        margin-bottom: 1.5rem;
+        padding: 0 5px;
+    }
+    h2 {
+        font-size: 1.8rem;
+        margin-bottom: 1.5rem;
+    }
+    .dashboard-card {
+        border-radius: 8px; /* Redondear las esquinas de las tarjetas en móvil */
+        box-shadow: 0 2px 8px rgba(0, 0, 0, 0.2); /* Sombra más suave en móvil */
+    }
+    .card-body-content {
+        padding: 15px;
+    }
+    .card-title {
+        font-size: 1.3rem;
+        margin-bottom: 0.6rem;
+    }
+    .explanation-text {
+        font-size: 0.9rem;
+        padding: 0 10px;
+    }
+    .dashboard-card .card-img-top {
+        max-height: 250px;
+        padding: 15px;
+    }
+
+    #resumen .display-5 {
+        font-size: 2.5rem;
+    }
+    #resumen .card-title {
+        font-size: 1.1rem;
+    }
+    #acerca p {
+        font-size: 0.9rem;
+    }
+}
+
+/* Para móviles pequeños (hasta 480px) */
+@media (max-width: 480px) {
+    h1 {
+        font-size: 2rem;
+        margin-bottom: 1rem;
+    }
+    h2 {
+        font-size: 1.6rem;
+    }
+    .dashboard-container {
+        padding: 10px;
+    }
+    .card-title {
+        font-size: 1.1rem;
+    }
+    .explanation-text {
+        font-size: 0.85rem;
+    }
+    .dashboard-card .card-img-top {
+        max-height: 180px;
+    }
+    #resumen .display-5 {
+        font-size: 2rem;
+    }
+}
+
+
+/* --- Estilos para el Lightbox Personalizado (JS Puro) --- */
+
+.custom-lightbox-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.9); /* Fondo oscuro semitransparente */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 1050; /* Más alto que el navbar de Bootstrap */
+    visibility: hidden; /* Oculto por defecto */
+    opacity: 0; /* Para la transición de fade */
+    transition: opacity 0.3s ease, visibility 0.3s ease;
+    padding: 20px; /* Pequeño padding general para el contenido */
+    box-sizing: border-box; /* Incluir padding en el tamaño */
+}
+
+.custom-lightbox-overlay.active {
+    visibility: visible;
+    opacity: 1;
+}
+
+.custom-lightbox-content {
+    position: relative; /* Para posicionar el botón de cierre y las flechas */
+    background-color: #1A2E44; /* Color de fondo de la tarjeta */
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0 0 20px rgba(0, 0, 0, 0.8);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    max-width: 90vw; /* Máximo ancho de la ventana */
+    max-height: 90vh; /* Máxima altura de la ventana */
+    overflow: hidden; /* Importante para el zoom, el contenido con zoom será controlado por Pinch Zoom */
+    transform: scale(0.8); /* Efecto de escala inicial */
+    transition: transform 0.3s ease;
+}
+
+.custom-lightbox-overlay.active .custom-lightbox-content {
+    transform: scale(1); /* Vuelve a la escala normal al activarse */
+}
+
+/* La imagen dentro del lightbox */
+#lightboxImage {
+    max-width: 100%; /* Permite que la imagen se ajuste inicialmente */
+    max-height: calc(90vh - 100px); /* Ajusta para dejar espacio al título y botones */
+    height: auto;
+    display: block;
+    object-fit: contain; /* Asegura que la imagen se escale sin distorsión */
+    border-radius: 5px;
+    margin-bottom: 15px; /* Espacio entre imagen y caption */
+    /* Deshabilitar arrastre por defecto para evitar conflictos con Pinch Zoom */
+    -webkit-user-drag: none;
+    user-select: none;
+    touch-action: pan-x pan-y; /* Permite arrastre y zoom con touch, importante para Pinch Zoom */
+}
+
+#lightboxCaption {
+    color: #E0E0E0;
+    font-size: 1.1rem;
+    text-align: center;
+    padding: 0 10px;
+    margin-bottom: 0; /* Eliminar margen inferior por defecto */
+}
+
+.custom-lightbox-close {
+    position: absolute;
+    top: 10px;
+    right: 15px;
+    color: #E0E0E0;
+    font-size: 2.5rem;
+    cursor: pointer;
+    z-index: 10; /* Asegura que esté por encima de la imagen */
+    line-height: 1; /* Elimina espacio extra */
+    opacity: 0.7;
+    transition: opacity 0.2s ease, color 0.2s ease;
+}
+
+.custom-lightbox-close:hover {
+    color: #FFD700; /* Amarillo oro al pasar el ratón */
+    opacity: 1;
+}
+
+.custom-lightbox-nav {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    font-size: 3rem;
+    color: #E0E0E0;
+    cursor: pointer;
+    padding: 0 15px;
+    user-select: none; /* Evita que el texto de las flechas se seleccione */
+    opacity: 0.6;
+    transition: opacity 0.2s ease, color 0.2s ease;
+}
+
+.custom-lightbox-nav:hover {
+    color: #4CAF50; /* Verde césped al pasar el ratón */
+    opacity: 1;
+}
+
+.custom-lightbox-prev {
+    left: 20px;
+}
+
+.custom-lightbox-next {
+    right: 20px;
+}
+
+/* Media Queries para responsividad del Lightbox */
+@media (max-width: 767px) {
+    .custom-lightbox-content {
+        padding: 10px;
+        max-width: 95vw;
+        max-height: 95vh;
+    }
+    #lightboxImage {
+        max-height: calc(95vh - 80px);
+        margin-bottom: 10px;
+    }
+    #lightboxCaption {
+        font-size: 1rem;
+    }
+    .custom-lightbox-close {
+        font-size: 2rem;
+        top: 5px;
+        right: 10px;
+    }
+    .custom-lightbox-nav {
+        font-size: 2.5rem;
+        padding: 0 10px;
+    }
+    .custom-lightbox-prev {
+        left: 5px;
+    }
+    .custom-lightbox-next {
+        right: 5px;
+    }
+}

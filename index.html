@@ -1,0 +1,389 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dashboard de Análisis de Fútbol</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-QWTKZyjpPEjISv5WaRU9O5sNl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <link rel="stylesheet" href="css/style.css">
+    <link href="https://fonts.googleapis.com/css2?family=Oswald:wght@400;700&family=Roboto:wght@300;400;700&display=swap" rel="stylesheet">
+</head>
+<body>
+
+    <div class="sidebar" id="sidebar">
+        <div class="sidebar-header">
+            <a href="#" class="sidebar-brand fw-bold">
+                <i class="fas fa-futbol"></i> <span class="brand-text">Análisis de Fútbol</span>
+            </a>
+            <button class="sidebar-toggle" id="sidebarToggle">
+                <i class="fas fa-bars"></i>
+            </button>
+        </div>
+        <ul class="sidebar-nav">
+            <li class="nav-item">
+                <a class="nav-link active" aria-current="page" href="#resumen">
+                    <i class="fas fa-tachometer-alt"></i> <span class="nav-text">Resumen</span>
+                </a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" href="#estadisticas">
+                    <i class="fas fa-chart-bar"></i> <span class="nav-text">Estadísticas Detalladas</span>
+                </a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" href="#acerca">
+                    <i class="fas fa-info-circle"></i> <span class="nav-text">Acerca de</span>
+                </a>
+            </li>
+        </ul>
+    </div>
+
+    <div class="main-content" id="mainContent">
+        <button class="sidebar-toggle d-lg-none" id="mobileSidebarToggle">
+            <i class="fas fa-bars"></i>
+        </button>
+
+        <div class="container-fluid py-4 dashboard-container">
+            <h1 class="text-center mb-5 display-4 text-primary">Dashboard de Análisis de Fútbol</h1>
+
+            <section id="resumen" class="mb-5">
+                <h2 class="text-center mb-4 text-secondary">Resumen General de la Liga</h2>
+                <p class="text-center lead text-muted">Explora los indicadores clave de rendimiento (KPIs) de la temporada actual. Estos datos te ofrecen una vista rápida de la dinámica general de la liga.</p>
+                <div class="row g-4 justify-content-center">
+                    <div class="col-sm-6 col-md-4 col-lg-3">
+                        <div class="card text-center p-3 h-100 shadow-sm border-info">
+                            <div class="card-body">
+                                <h3 class="card-title text-info">Goles Promedio por Partido</h3>
+                                <p class="display-5 fw-bold text-info">2.75</p>
+                                <p class="card-text text-muted">Según la última jornada.</p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-sm-6 col-md-4 col-lg-3">
+                        <div class="card text-center p-3 h-100 shadow-sm border-success">
+                            <div class="card-body">
+                                <h3 class="card-title text-success">xG Promedio por Partido</h3>
+                                <p class="display-5 fw-bold text-success">1.45</p>
+                                <p class="card-text text-muted">Indica la calidad de las ocasiones.</p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-sm-6 col-md-4 col-lg-3">
+                        <div class="card text-center p-3 h-100 shadow-sm border-warning">
+                            <div class="card-body">
+                                <h3 class="card-title text-warning">Partidos Analizados</h3>
+                                <p class="display-5 fw-bold text-warning">380</p>
+                                <p class="card-text text-muted">Datos de toda la temporada.</p>
+                            </div>
+                        </div>
+                    </div>
+                     <div class="col-sm-6 col-md-4 col-lg-3">
+                        <div class="card text-center p-3 h-100 shadow-sm border-danger">
+                            <div class="card-body">
+                                <h3 class="card-title text-danger">Sorpresas (xPts)</h3>
+                                <p class="display-5 fw-bold text-danger">+/- 5.2</p>
+                                <p class="card-text text-muted">Desviación promedio de puntos esperados.</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <hr class="my-5">
+
+            <section id="estadisticas">
+                <h2 class="text-center mb-4 text-secondary">Estadísticas Detalladas por Gráfica</h2>
+                <p class="text-center lead text-muted">Sumérgete en el análisis profundo de cada métrica clave. Cada gráfica te proporciona una visión específica sobre el rendimiento de los equipos.</p>
+                <div class="charts-grid-container">
+                    <div class="card h-100 shadow-sm dashboard-card">
+                        <div class="card-body-content">
+                            <h5 class="card-title text-center text-dark">Equilibrio Ofensivo-Defensivo (xG vs xGA)</h5>
+                            <small class="text-muted explanation-text d-block mb-3">Análisis del desempeño ofensivo (xG) vs. defensivo (xGA) promedio por equipo.</small>
+                        </div>
+                        <a href="images/xg_vs_xga.png" class="gallery-item" data-title="Equilibrio Ofensivo-Defensivo (xG vs xGA)">
+                            <img src="images/xg_vs_xga.png" class="card-img-top img-fluid" alt="Gráfico xG vs xGA">
+                        </a>
+                    </div>
+
+                    <div class="card h-100 shadow-sm dashboard-card">
+                        <div class="card-body-content">
+                            <h5 class="card-title text-center text-dark">Diferencia Puntos Reales vs Esperados (xPts)</h5>
+                            <small class="text-muted explanation-text d-block mb-3">Muestra la suerte de los equipos: Puntos Reales - Puntos Esperados.</small>
+                        </div>
+                        <a href="images/xpts_vs_pts.png" class="gallery-item" data-title="Diferencia Puntos Reales vs Esperados (xPts)">
+                            <img src="images/xpts_vs_pts.png" class="card-img-top img-fluid" alt="Gráfico Puntos Reales vs Esperados">
+                        </a>
+                    </div>
+
+                    <div class="card h-100 shadow-sm dashboard-card">
+                        <div class="card-body-content">
+                            <h5 class="card-title text-center text-dark">Eficiencia Ofensiva (xG vs Goles Reales)</h5>
+                            <small class="text-muted explanation-text d-block mb-3">Relación entre goles esperados y reales, indicando la eficiencia de conversión.</small>
+                        </div>
+                        <a href="images/xg_vs_goals.png" class="gallery-item" data-title="Eficiencia Ofensiva (xG vs Goles Reales)">
+                            <img src="images/xg_vs_goals.png" class="card-img-top img-fluid" alt="Gráfico xG vs Goles Reales">
+                        </a>
+                    </div>
+
+                    <div class="card h-100 shadow-sm dashboard-card">
+                        <div class="card-body-content">
+                            <h5 class="card-title text-center text-dark">Distribución de xG por Partido</h5>
+                            <small class="text-muted explanation-text d-block mb-3">Frecuencia de valores de xG en todos los partidos de la liga.</small>
+                        </div>
+                        <a href="images/xg_distribution.png" class="gallery-item" data-title="Distribución de xG por Partido">
+                            <img src="images/xg_distribution.png" class="card-img-top img-fluid" alt="Gráfico Distribución de xG">
+                        </a>
+                    </div>
+
+                    <div class="card h-100 shadow-sm dashboard-card">
+                        <div class="card-body-content">
+                            <h5 class="card-title text-center text-dark">Relación Acciones Deep vs xG</h5>
+                            <small class="text-muted explanation-text d-block mb-3">Correlación entre el tiempo en campo rival y los goles esperados.</small>
+                        </div>
+                        <a href="images/deep_vs_xg.png" class="gallery-item" data-title="Relación Acciones Deep vs xG">
+                            <img src="images/deep_vs_xg.png" class="card-img-top img-fluid" alt="Gráfico Deep vs xG">
+                        </a>
+                    </div>
+
+                    <div class="card h-100 shadow-sm dashboard-card">
+                        <div class="card-body-content">
+                            <h5 class="card-title text-center text-dark">Rendimiento Local vs Visitante (npxGD)</h5>
+                            <small class="text-muted explanation-text d-block mb-3">Comparación del diferencial de goles esperados sin penalti entre partidos en casa y fuera.</small>
+                        </div>
+                        <a href="images/home_away_diff.png" class="gallery-item" data-title="Rendimiento Local vs Visitante (npxGD)">
+                            <img src="images/home_away_diff.png" class="card-img-top img-fluid" alt="Gráfico Local vs Visitante">
+                        </a>
+                    </div>
+
+                    <div class="card h-100 shadow-sm dashboard-card">
+                        <div class="card-body-content">
+                            <h5 class="card-title text-center text-dark">Evolución del xG Promedio (Temporada)</h5>
+                            <small class="text-muted explanation-text d-block mb-3">Tendencia del xG promedio a lo largo de la temporada, mostrando variaciones mensuales.</small>
+                        </div>
+                        <a href="images/xg_trend.png" class="gallery-item" data-title="Evolución del xG Promedio (Temporada)">
+                            <img src="images/xg_trend.png" class="card-img-top img-fluid" alt="Gráfico Evolución xG">
+                        </a>
+                    </div>
+
+                    <div class="card h-100 shadow-sm dashboard-card">
+                        <div class="card-body-content">
+                            <h5 class="card-title text-center text-dark">Distribución de Resultados en la Liga</h5>
+                            <small class="text-muted explanation-text d-block mb-3">Porcentaje de Victorias, Empates y Derrotas en el dataset.</small>
+                        </div>
+                        <a href="images/result_distribution.png" class="gallery-item" data-title="Distribución de Resultados en la Liga">
+                            <img src="images/result_distribution.png" class="card-img-top img-fluid" alt="Gráfico Distribución Resultados">
+                        </a>
+                    </div>
+
+                    <div class="card h-100 shadow-sm dashboard-card chart-full-width">
+                        <div class="card-body-content">
+                            <h5 class="card-title text-center text-dark">Matriz de Correlación de Métricas</h5>
+                            <small class="text-muted explanation-text d-block mb-3">Muestra cómo se relacionan entre sí diferentes métricas de juego (xG, xGA, deep, etc.).</small>
+                        </div>
+                        <a href="images/metrics_correlation.png" class="gallery-item" data-title="Matriz de Correlación de Métricas">
+                            <img src="images/metrics_correlation.png" class="card-img-top img-fluid" alt="Gráfico Matriz Correlación">
+                        </a>
+                    </div>
+
+                </div>
+            </section>
+
+            <hr class="my-5">
+
+        </div>
+
+        <footer class="bg-dark text-white-50 py-4 mt-5">
+            <div class="container text-center dashboard-container">
+                <p class="mb-1">&copy; 2025 Dashboard de Análisis de Fútbol. Todos los derechos reservados.</p>
+                <p class="mb-0">Desarrollado con datos de código abierto y <a href="https://getbootstrap.com/" class="text-white-50 text-decoration-none">Bootstrap</a>.</p>
+                </div>
+        </footer>
+    </div>
+
+    <div id="customLightbox" class="custom-lightbox-overlay">
+        <div class="custom-lightbox-content">
+            <span class="custom-lightbox-close">&times;</span>
+            <img id="lightboxImage" src="" alt="Imagen agrandada">
+            <p id="lightboxCaption"></p>
+            <div class="custom-lightbox-nav custom-lightbox-prev">&leftarrow;</div>
+            <div class="custom-lightbox-nav custom-lightbox-next">&rightarrow;</div>
+        </div>
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eP7N6jIeHz" crossorigin="anonymous"></script>
+    
+    <script src="https://unpkg.com/pinch-zoom-js@2.3.0/dist/pinch-zoom.min.js"></script>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            const galleryItems = document.querySelectorAll('.gallery-item');
+            const customLightbox = document.getElementById('customLightbox');
+            const lightboxImage = document.getElementById('lightboxImage');
+            const lightboxCaption = document.getElementById('lightboxCaption');
+            const closeBtn = document.querySelector('.custom-lightbox-close');
+            const prevBtn = document.querySelector('.custom-lightbox-prev');
+            const nextBtn = document.querySelector('.custom-lightbox-next');
+            const body = document.body; // Referencia al body para las clases
+            const sidebar = document.getElementById('sidebar');
+            const mainContent = document.getElementById('mainContent');
+
+            // NUEVOS elementos para el toggle móvil
+            const sidebarToggleDesktop = document.getElementById('sidebarToggle'); // El botón dentro de la sidebar
+            const mobileSidebarToggle = document.getElementById('mobileSidebarToggle'); // El nuevo botón fuera de la sidebar
+
+            let currentIndex = 0;
+            const imageUrls = [];
+            const imageTitles = [];
+            let pinchZoomInstance = null; // Para guardar la instancia de Pinch Zoom
+
+            // Llenar arrays con URLs y títulos de las imágenes
+            galleryItems.forEach((item, index) => {
+                imageUrls.push(item.href);
+                imageTitles.push(item.dataset.title || ''); // Usar dataset.title o cadena vacía
+
+                item.addEventListener('click', (e) => {
+                    e.preventDefault(); // Previene la navegación del enlace
+                    currentIndex = index;
+                    showImage(currentIndex);
+                });
+            });
+
+            // Función para mostrar la imagen en el lightbox
+            function showImage(index) {
+                if (index < 0) {
+                    currentIndex = imageUrls.length - 1; // Ir al final si es el primero y se presiona prev
+                } else if (index >= imageUrls.length) {
+                    currentIndex = 0; // Ir al principio si es el último y se presiona next
+                } else {
+                    currentIndex = index;
+                }
+
+                lightboxImage.src = imageUrls[currentIndex];
+                lightboxCaption.textContent = imageTitles[currentIndex];
+                customLightbox.classList.add('active'); // Muestra el lightbox
+
+                // Destruir la instancia anterior de Pinch Zoom si existe
+                if (pinchZoomInstance) {
+                    pinchZoomInstance.destroy();
+                    pinchZoomInstance = null;
+                }
+
+                // Esperar a que la imagen se cargue completamente antes de inicializar Pinch Zoom
+                lightboxImage.onload = () => {
+                    pinchZoomInstance = new PinchZoom.default(lightboxImage, {
+                        zoomOutFactor: 1, // Permite un zoom-out hasta el tamaño original
+                        maxZoom: 4, // Zoom máximo de 4x
+                        minZoom: 0.5, // Zoom mínimo de 0.5x
+                        draggableUnzoomed: false // No arrastrar si no hay zoom (opcional, para evitar conflictos con la navegación)
+                    });
+                };
+            }
+
+            // Event Listeners para cerrar y navegar
+            closeBtn.addEventListener('click', () => {
+                customLightbox.classList.remove('active'); // Oculta el lightbox
+                // Destruir la instancia de Pinch Zoom al cerrar el lightbox
+                if (pinchZoomInstance) {
+                    pinchZoomInstance.destroy();
+                    pinchZoomInstance = null;
+                }
+            });
+
+            customLightbox.addEventListener('click', (e) => {
+                // Cierra el lightbox si se hace clic en el fondo oscuro
+                if (e.target === customLightbox) {
+                    customLightbox.classList.remove('active');
+                    // Destruir la instancia de Pinch Zoom al cerrar el lightbox
+                    if (pinchZoomInstance) {
+                        pinchZoomInstance.destroy();
+                        pinchZoomInstance = null;
+                    }
+                }
+            });
+
+            prevBtn.addEventListener('click', () => {
+                // Destruir la instancia actual antes de cargar la nueva imagen
+                if (pinchZoomInstance) {
+                    pinchZoomInstance.destroy();
+                    pinchZoomInstance = null;
+                }
+                showImage(currentIndex - 1);
+            });
+
+            nextBtn.addEventListener('click', () => {
+                // Destruir la instancia actual antes de cargar la nueva imagen
+                if (pinchZoomInstance) {
+                    pinchZoomInstance.destroy();
+                    pinchZoomInstance = null;
+                }
+                showImage(currentIndex + 1);
+            });
+
+            // Navegación con teclado
+            document.addEventListener('keydown', (e) => {
+                if (customLightbox.classList.contains('active')) {
+                    if (e.key === 'ArrowLeft') {
+                        // Destruir la instancia actual antes de cargar la nueva imagen
+                        if (pinchZoomInstance) {
+                            pinchZoomInstance.destroy();
+                            pinchZoomInstance = null;
+                        }
+                        showImage(currentIndex - 1);
+                    } else if (e.key === 'ArrowRight') {
+                        // Destruir la instancia actual antes de cargar la nueva imagen
+                        if (pinchZoomInstance) {
+                            pinchZoomInstance.destroy();
+                            pinchZoomInstance = null;
+                        }
+                        showImage(currentIndex + 1);
+                    } else if (e.key === 'Escape') {
+                        customLightbox.classList.remove('active');
+                        // Destruir la instancia de Pinch Zoom al cerrar el lightbox
+                        if (pinchZoomInstance) {
+                            pinchZoomInstance.destroy();
+                            pinchZoomInstance = null;
+                        }
+                    }
+                }
+            });
+
+            // JavaScript para la barra lateral (Desktop y Móvil)
+            
+            // Lógica para el botón dentro de la sidebar (sirve para desktop y para cerrar en móvil)
+            sidebarToggleDesktop.addEventListener('click', () => {
+                if (window.innerWidth >= 992) { // Lógica para desktop
+                    sidebar.classList.toggle('collapsed');
+                    mainContent.classList.toggle('sidebar-collapsed');
+                } else { // Lógica para móvil (cerrar el off-canvas)
+                    body.classList.remove('sidebar-open');
+                }
+            });
+
+            // Lógica para el nuevo botón de toggle para móvil
+            mobileSidebarToggle.addEventListener('click', () => {
+                body.classList.toggle('sidebar-open'); // Abre/cierra el off-canvas
+            });
+
+            // Cerrar sidebar si se redimensiona a desktop mientras está abierta en móvil
+            window.addEventListener('resize', () => {
+                if (window.innerWidth >= 992) {
+                    body.classList.remove('sidebar-open'); // Asegura que no se quede abierta si se pasa a desktop
+                    sidebar.classList.remove('collapsed'); // Asegura que esté expandida en desktop por defecto
+                    mainContent.classList.remove('sidebar-collapsed'); // Ajusta el main content
+                }
+            });
+
+            // Para asegurar el estado inicial correcto en desktop
+            if (window.innerWidth >= 992) {
+                 sidebar.classList.remove('collapsed');
+                 mainContent.classList.remove('sidebar-collapsed');
+            } else {
+                 sidebar.classList.add('collapsed'); // Por si acaso para que no haya conflicto visual
+                 mainContent.classList.remove('sidebar-collapsed'); // No aplica margen en móvil
+            }
+
+        });
+    </script>
+</body>
+</html>
