@@ -37,6 +37,11 @@
                     <i class="fas fa-chart-bar"></i> <span class="nav-text">Estadísticas Detalladas</span>
                 </a>
             </li>
+             <li class="nav-item">
+                <a class="nav-link" href="#glosario">
+                    <i class="fas fa-book"></i> <span class="nav-text">Glosario de Métricas</span>
+                </a>
+            </li>
             <li class="nav-item">
                 <a class="nav-link" href="#acerca">
                     <i class="fas fa-info-circle"></i> <span class="nav-text">Acerca de</span>
@@ -56,14 +61,14 @@
             <section id="resumen" class="mb-5">
                 <h2 class="text-center mb-4 text-secondary">Resumen General de la Liga</h2>
                 <p class="text-center lead text-muted">Explora los indicadores clave de rendimiento (KPIs) de la
-                    temporada actual. Estos datos te ofrecen una vista rápida de la dinámica general de la liga.</p>
+                    temporada actual, derivados del análisis estadístico.</p>
                 <div class="row g-4 justify-content-center">
                     <div class="col-sm-6 col-md-4 col-lg-3">
                         <div class="card text-center p-3 h-100 shadow-sm border-info">
                             <div class="card-body">
                                 <h3 class="card-title text-info">Goles Promedio por Partido</h3>
                                 <p class="display-5 fw-bold text-info">2.75</p>
-                                <p class="card-text text-muted">Según la última jornada.</p>
+                                <p class="card-text text-muted">Total de goles en la liga dividido por partidos.</p>
                             </div>
                         </div>
                     </div>
@@ -71,8 +76,8 @@
                         <div class="card text-center p-3 h-100 shadow-sm border-success">
                             <div class="card-body">
                                 <h3 class="card-title text-success">xG Promedio por Partido</h3>
-                                <p class="display-5 fw-bold text-success">1.45</p>
-                                <p class="card-text text-muted">Indica la calidad de las ocasiones.</p>
+                                <p class="display-5 fw-bold text-success">1.41</p>
+                                <p class="card-text text-muted">Media de Goles Esperados por encuentro.</p>
                             </div>
                         </div>
                     </div>
@@ -81,16 +86,16 @@
                             <div class="card-body">
                                 <h3 class="card-title text-warning">Partidos Analizados</h3>
                                 <p class="display-5 fw-bold text-warning">380</p>
-                                <p class="card-text text-muted">Datos de toda la temporada.</p>
+                                <p class="card-text text-muted">Total de encuentros incluidos en el análisis.</p>
                             </div>
                         </div>
                     </div>
                     <div class="col-sm-6 col-md-4 col-lg-3">
                         <div class="card text-center p-3 h-100 shadow-sm border-danger">
                             <div class="card-body">
-                                <h3 class="card-title text-danger">Sorpresas (xPts)</h3>
-                                <p class="display-5 fw-bold text-danger">+/- 5.2</p>
-                                <p class="card-text text-muted">Desviación promedio de puntos esperados.</p>
+                                <h3 class="card-title text-danger">Desviación Típica (xPts)</h3>
+                                <p class="display-5 fw-bold text-danger">&plusmn; 10.3</p>
+                                <p class="card-text text-muted">Indica la variabilidad de puntos reales vs esperados.</p>
                             </div>
                         </div>
                     </div>
@@ -116,25 +121,11 @@
                         </a>
                         <div>
                             <h3 class="card-title text-center text-dark">Interpretacion</h3>
-                            <p class="text-muted explanation-text d-block mb-3">Compara el xG promedio (generación de
-                                ataque) con el xGA promedio (oportunidades
-                                defensivas concedidas) de cada
-                                equipo, dividiendo el gráfico en cuatro cuadrantes.</p>
-                            <ul class="text-muted explanation-text d-block mb-3">
-                                <li><b>Cuadrante Inferior Derecho (Mejor):</b> Alto xG, Bajo xGA. Equipos dominantes y
-                                    equilibrados (ej. Man City,
-                                    Bayern).</li>
-                                <li><b>Cuadrante Superior Derecho:</b> Alto xG, Alto xGA. Atacan mucho, pero también
-                                    conceden mucho (ej.
-                                    Hoffenheim).</li>
-                                <li><b>Cuadrante Inferior Izquierdo:</b> Bajo xG, Bajo xGA. Defienden bien, pero les
-                                    cuesta atacar (ej. Atlético
-                                    Madrid).</li>
-                                <li><b>Cuadrante Superior Izquierdo (Peor):</b> Bajo xG, Alto xGA. Les cuesta atacar y
-                                    conceden mucho (ej.
-                                    Huddersfield).</li>
-                                <li><b>Conclusión:</b> Permite clasificar a los equipos por su perfil de juego ofensivo
-                                    y defensivo.</li>
+                            <ul class="text-muted explanation-text d-block mb-3 interpretation-list">
+                                <li>Compara el xG promedio (ataque generado) con el xGA promedio (oportunidades defensivas concedidas).</li>
+                                <li><strong>Cuadrante Inferior Derecho (Mejor):</strong> Alto xG, Bajo xGA (ej. Man City, Bayern).</li>
+                                <li><strong>Cuadrante Superior Izquierdo (Peor):</strong> Bajo xG, Alto xGA (ej. Huddersfield).</li>
+                                <li><strong>Conclusión:</strong> Clasifica equipos por su perfil ofensivo y defensivo.</li>
                             </ul>
                         </div>
                     </div>
@@ -153,22 +144,11 @@
                         </a>
                         <div>
                             <h3 class="card-title text-center text-dark">Interpretacion</h3>
-                            <p class="text-muted explanation-text d-block mb-3">Muestra la diferencia entre los puntos
-                                reales obtenidos y los puntos esperados (xPts) por
-                                cada equipo. Las barras
-                                verdes indican más puntos de los esperados ("suerte"), y las rojas, menos ("mala suerte"
-                                o ineficiencia).</p>
-                            <ul class="text-muted explanation-text d-block mb-3">
-                                <li><b>xPts:</b> Puntos que un equipo "debería" tener según la calidad de sus
-                                    oportunidades.</li>
-                                <li><b>Barras Verdes (positivas):</b> Equipos que rinden por encima de lo esperado (ej.
-                                    B. Monchengladbach, Atletico
-                                    Madrid).</li>
-                                <li><b>Barras Rojas (negativas):</b> Equipos que rinden por debajo de lo esperado (ej.
-                                    Brighton, Stuttgart).</li>
-                                <li><b>Conclusión:</b> Es clave para identificar equipos que han sido "afortunados" o
-                                    "desafortunados" en sus
-                                    resultados en relación con su rendimiento subyacente.</li>
+                            <ul class="text-muted explanation-text d-block mb-3 interpretation-list">
+                                <li>Compara puntos reales con puntos esperados (xPts).</li>
+                                <li><strong>Barras Verdes (positivas):</strong> Equipos con más puntos de los esperados ("suerte").</li>
+                                <li><strong>Barras Rojas (negativas):</strong> Equipos con menos puntos de los esperados ("mala suerte" o ineficiencia).</li>
+                                <li><strong>Conclusión:</strong> Identifica equipos "afortunados" o "desafortunados" según su rendimiento subyacente.</li>
                             </ul>
                         </div>
                     </div>
@@ -187,21 +167,12 @@
 
                         <div>
                             <h5 class="card-title text-center text-dark">Interpretacion</h5>
-                            <p class="text-muted explanation-text d-block mb-3">Compara los goles esperados (xG) de un
-                                equipo con sus goles reales marcados. El color
-                                indica eficiencia (verde=más
-                                eficiente, rojo=menos eficiente) y el tamaño el número de partidos.</p>
-                            <ul class="text-muted explanation-text d-block mb-3">
-                                <li><b>Línea Roja:</b> Goles Reales = xG (eficiencia neutra).</li>
-                                <li><b>Equipos Verdes (arriba de la línea):</b> Convierten más goles de lo esperado (ej.
-                                    Bayern, Man City, PSG). Son
-                                    muy eficientes o "afortunados".</li>
-                                <li><b>Equipos Rojos (debajo de la línea):</b> Convierten menos goles de lo esperado
-                                    (ej. Huddersfield, Brighton).
-                                    Necesitan mejorar su definición o tienen "mala suerte".</li>
-                                <li><b>Conclusión:</b> Permite identificar qué equipos son letales frente al gol
-                                    (verdes) y cuáles tienen problemas
-                                    para materializar sus ocasiones (rojos).</li>
+                            <ul class="text-muted explanation-text d-block mb-3 interpretation-list">
+                                <li>Compara goles esperados (xG) con goles reales marcados.</li>
+                                <li><strong>Línea Roja:</strong> Goles Reales = xG (eficiencia neutra).</li>
+                                <li><strong>Equipos Verdes (arriba):</strong> Convierten más goles de lo esperado (ej. Bayern).</li>
+                                <li><strong>Equipos Rojos (debajo):</strong> Convierten menos goles de lo esperado (ej. Brighton).</li>
+                                <li><strong>Conclusión:</strong> Identifica equipos letales (verdes) y aquellos con problemas de definición (rojos).</li>
                             </ul>
                         </div>
                     </div>
@@ -220,18 +191,10 @@
 
                         <div>
                             <h5 class="card-title text-center text-dark">Interpretacion</h5>
-                            <p class="text-muted explanation-text d-block mb-3">Histograma que muestra la frecuencia de
-                                los valores de xG generados por partido en la
-                                liga, con una curva de
-                                densidad y la media.</p>
-                            <ul class="text-muted explanation-text d-block mb-3">
-                                <li><b>Eje X (xG):</b> Goles esperados por partido.</li>
-                                <li><b>Eje Y (Frecuencia):</b> Cuántos partidos tuvieron ese rango de xG.</li>
-                                <li><b>Media (Línea Roja):</b> 1.41 xG promedio por partido.</li>
-                                <li><b>Conclusión:</b> La distribución está <b>sesgada a la derecha</b>, indicando que
-                                    la mayoría de los partidos
-                                    tienen un xG moderado (entre 1.0 y 1.5), y es raro ver partidos con un xG muy alto.
-                                </li>
+                            <ul class="text-muted explanation-text d-block mb-3 interpretation-list">
+                                <li>Histograma que muestra la frecuencia de los valores de xG por partido.</li>
+                                <li><strong>Media (Línea Roja):</strong> 1.41 xG promedio por partido.</li>
+                                <li><strong>Conclusión:</strong> La distribución está sesgada a la derecha, indicando que la mayoría de los partidos tienen un xG moderado.</li>
                             </ul>
                         </div>
                     </div>
@@ -248,17 +211,10 @@
 
                         <div>
                             <h5 class="card-title text-center text-dark">Interpretacion</h5>
-                            <p class="text-muted explanation-text d-block mb-3">Esta gráfica explora si los equipos con
-                                más posesión en campo rival (Acciones Deep)
-                                generan más goles esperados
-                                (xG). Los puntos muestran una <b>clara correlación positiva</b>: a mayor presencia
-                                ofensiva en zonas peligrosas,
-                                mayor la calidad y cantidad de oportunidades de gol creadas (xG).</p>
-                            <ul class="text-muted explanation-text d-block mb-3">
-                                <li><b>Eje X (Acciones Deep):</b> Cantidad de acciones en campo rival.</li>
-                                <li><b>Eje Y (xG esperado):</b> Calidad de las oportunidades de gol.</li>
-                                <li><b>Conclusión:</b> Más acciones ofensivas profundas se traducen en más y mejores
-                                    ocasiones de gol.</li>
+                            <ul class="text-muted explanation-text d-block mb-3 interpretation-list">
+                                <li>Explora si más posesión en campo rival (Acciones Deep) genera más xG.</li>
+                                <li><strong>Correlación positiva:</strong> A mayor presencia ofensiva profunda, mayor la calidad y cantidad de ocasiones de gol.</li>
+                                <li><strong>Conclusión:</strong> Más acciones ofensivas profundas se traducen en más y mejores ocasiones de gol.</li>
                             </ul>
                         </div>
                     </div>
@@ -277,17 +233,9 @@
 
                         <div>
                             <h5 class="card-title text-center text-dark">Interpretacion</h5>
-                            <p class="text-muted explanation-text d-block mb-3">Compara el rendimiento promedio de los equipos en casa ("Local") y fuera ("Visitante")
-                                usando la métrica npxGD
-                                (Diferencial de Goles Esperados sin Penaltis).</p>
-                            <ul class="text-muted explanation-text d-block mb-3">
-                                <li><b>npxGD:</b> $npxG - npxGA$ (oportunidades creadas vs. concedidas, sin penaltis).
-                                    Positivo es bueno, negativo
-                                    es malo.</li>
-                                <li><b>Conclusión:</b> Los equipos muestran un <b>npxGD positivo como locales</b> (mejor
-                                    rendimiento) y <b>negativo
-                                        como visitantes</b> (peor rendimiento), confirmando la ventaja de jugar en casa.
-                                </li>
+                            <ul class="text-muted explanation-text d-block mb-3 interpretation-list">
+                                <li>Compara rendimiento promedio en casa y fuera usando npxGD ($npxG - npxGA$).</li>
+                                <li><strong>Conclusión:</strong> Equipos muestran npxGD positivo como locales y negativo como visitantes, confirmando la ventaja de jugar en casa.</li>
                             </ul>
                         </div>
                     </div>
@@ -304,16 +252,9 @@
                         </a>
 
                         <h3 class="card-title text-center text-dark">Interpretacion</h3>
-                        <p class="text-muted explanation-text d-block mb-3">Muestra la tendencia del xG promedio por
-                            partido a lo largo de los meses de varias
-                            temporadas.</p>
-                        <ul class="text-muted explanation-text d-block mb-3">
-                            <li><b>Eje X (Mes):</b> Tiempo a lo largo de las temporadas.</li>
-                            <li><b>Eje Y (xG Promedio):</b> xG promedio mensual.</li>
-                            <li><b>Conclusión:</b> El xG promedio <b>fluctúa significativamente</b> a lo largo del
-                                tiempo (entre 1.30 y 1.55),
-                                mostrando picos y valles que reflejan variaciones en la creación de juego a lo largo de
-                                la temporada.</li>
+                        <ul class="text-muted explanation-text d-block mb-3 interpretation-list">
+                            <li>Muestra la tendencia del xG promedio por partido a lo largo de los meses.</li>
+                            <li><strong>Conclusión:</strong> El xG promedio fluctúa significativamente, reflejando variaciones en la creación de juego a lo largo de la temporada.</li>
                         </ul>
                     </div>
 
@@ -331,17 +272,9 @@
 
                         <div>
                             <h3 class="card-title text-center text-dark">Interpretacion</h3>
-                            <p class="text-muted explanation-text d-block mb-3">Histograma que muestra el porcentaje de
-                                Victorias ("w"), Derrotas ("l") y Empates ("d")
-                                en el dataset de la liga.
-                            </p>
-                            <ul class="text-muted explanation-text d-block mb-3">
-                                <li><b>Victorias (w):</b> Aproximadamente 37%.</li>
-                                <li><b>Derrotas (l):</b> Aproximadamente 37%.</li>
-                                <li><b>Empates (d):</b> Aproximadamente 25%.</li>
-                                <li><b>Conclusión:</b> La mayoría de los partidos tienen un ganador o perdedor, con los
-                                    empates siendo el resultado
-                                    menos frecuente, lo cual es típico en el fútbol.</li>
+                            <ul class="text-muted explanation-text d-block mb-3 interpretation-list">
+                                <li>Histograma que muestra el porcentaje de Victorias ("w"), Derrotas ("l") y Empates ("d").</li>
+                                <li><strong>Conclusión:</strong> La mayoría de los partidos tienen un ganador o perdedor, con los empates siendo el resultado menos frecuente, lo cual es típico.</li>
                             </ul>
                         </div>
                     </div>
@@ -359,23 +292,11 @@
                         </a>
                         <div>
                             <h3 class="card-title text-center text-dark">Interpretacion</h3>
-                            <p class="text-muted explanation-text d-block mb-3">Muestra la relación lineal (coeficiente
-                                de correlación de Pearson, de -1 a 1) entre
-                                diferentes métricas clave de
-                                juego (xG, xGA, deep, scored, missed). Rojo intenso = correlación positiva fuerte; Azul
-                                intenso = correlación
-                                negativa fuerte; Blanco = sin correlación lineal.</p>
-                            <ul class="text-muted explanation-text d-block mb-3">
-                                <li><b>xG con Scored (0.63):</b> Fuerte correlación positiva. El xG es un gran predictor
-                                    de goles reales.</li>
-                                <li><b>Deep con xG (0.53):</b> Correlación positiva moderada-fuerte. Estar en campo
-                                    rival genera más xG.</li>
-                                <li><b>xGA con Deep Allowed (0.53):</b> Fuerte correlación positiva. Permitir acciones
-                                    profundas al rival se
-                                    relaciona con conceder más xGA.</li>
-                                <li><b>Conclusión:</b> Permite entender cómo las métricas se influyen mutuamente,
-                                    validando el xG como predictor de
-                                    goles y destacando la importancia del control territorial.</li>
+                            <ul class="text-muted explanation-text d-block mb-3 interpretation-list">
+                                <li>Muestra la relación lineal entre métricas clave (xG, xGA, deep, scored, missed).</li>
+                                <li><strong>xG con Scored (0.63):</strong> Fuerte correlación positiva; xG es un gran predictor de goles reales.</li>
+                                <li><strong>Deep con xG (0.53):</strong> Correlación positiva moderada-fuerte; estar en campo rival genera más xG.</li>
+                                <li><strong>Conclusión:</strong> Permite entender cómo las métricas se influyen mutuamente, validando el xG como predictor y destacando el control territorial.</li>
                             </ul>
                         </div>
                     </div>
@@ -385,10 +306,119 @@
 
             <hr class="my-5">
 
+            <section id="glosario" class="mb-5">
+                <h2 class="text-center mb-4 text-secondary">Glosario de Métricas del Dataset</h2>
+                <p class="text-center lead text-muted">A continuación se explica el significado de cada campo presente en la base de datos subyacente a este dashboard.</p>
+                <div class="row justify-content-center">
+                    <div class="col-lg-10">
+                        <div class="table-responsive">
+                            <table class="table table-striped table-hover">
+                                <thead class="table-dark">
+                                    <tr>
+                                        <th scope="col">Campo</th>
+                                        <th scope="col">Descripción</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr>
+                                        <td><code>league</code></td>
+                                        <td>Nombre de la liga a la que pertenece el partido (e.g., EFE).</td>
+                                    </tr>
+                                    <tr>
+                                        <td><code>year</code></td>
+                                        <td>Año de la temporada del partido (e.g., 2018).</td>
+                                    </tr>
+                                    <tr>
+                                        <td><code>r_xG</code></td>
+                                        <td>Goles Esperados (xG) del equipo local en el partido. Mide la calidad de las ocasiones de gol.</td>
+                                    </tr>
+                                    <tr>
+                                        <td><code>a_xG</code></td>
+                                        <td>Goles Esperados (xG) del equipo visitante en el partido. Mide la calidad de las ocasiones de gol.</td>
+                                    </tr>
+                                    <tr>
+                                        <td><code>npxG</code></td>
+                                        <td>Goles Esperados sin Penalti. Similar al xG pero excluyendo los penaltis.</td>
+                                    </tr>
+                                    <tr>
+                                        <td><code>npxGA</code></td>
+                                        <td>Goles Esperados Concedidos sin Penalti. Mide la calidad de las ocasiones concedidas al rival, excluyendo penaltis.</td>
+                                    </tr>
+                                    <tr>
+                                        <td><code>deep</code></td>
+                                        <td>Número de pases completados en la zona de ataque del equipo rival (acciones en "deep possession").</td>
+                                    </tr>
+                                    <tr>
+                                        <td><code>deep_allowed</code></td>
+                                        <td>Número de pases completados por el rival en la zona de ataque propia.</td>
+                                    </tr>
+                                    <tr>
+                                        <td><code>scored</code></td>
+                                        <td>Número de goles marcados por el equipo.</td>
+                                    </tr>
+                                    <tr>
+                                        <td><code>missed</code></td>
+                                        <td>Número de goles encajados por el equipo.</td>
+                                    </tr>
+                                    <tr>
+                                        <td><code>xpts</code></td>
+                                        <td>Puntos Esperados. Puntos que un equipo "debería" haber obtenido según la calidad de sus oportunidades de gol (xG) y las oportunidades concedidas (xGA) en un partido.</td>
+                                    </tr>
+                                    <tr>
+                                        <td><code>result</code></td>
+                                        <td>Resultado del partido para el equipo: 'w' (victoria), 'd' (empate), 'l' (derrota).</td>
+                                    </tr>
+                                    <tr>
+                                        <td><code>date</code></td>
+                                        <td>Fecha y hora del partido.</td>
+                                    </tr>
+                                    <tr>
+                                        <td><code>wins</code></td>
+                                        <td>Número de victorias del equipo en la temporada o un período específico.</td>
+                                    </tr>
+                                    <tr>
+                                        <td><code>draws</code></td>
+                                        <td>Número de empates del equipo en la temporada o un período específico.</td>
+                                    </tr>
+                                    <tr>
+                                        <td><code>loses</code></td>
+                                        <td>Número de derrotas del equipo en la temporada o un período específico.</td>
+                                    </tr>
+                                    <tr>
+                                        <td><code>pts</code></td>
+                                        <td>Puntos totales obtenidos por el equipo (3 por victoria, 1 por empate).</td>
+                                    </tr>
+                                    <tr>
+                                        <td><code>npxGD</code></td>
+                                        <td>Diferencial de Goles Esperados sin Penalti ($npxG - npxGA$). Un valor positivo indica que el equipo generó más oportunidades sin penalti de las que concedió.</td>
+                                    </tr>
+                                    <tr>
+                                        <td><code>team</code></td>
+                                        <td>Nombre del equipo.</td>
+                                    </tr>
+                                    <tr>
+                                        <td><code>team_xG</code></td>
+                                        <td>Goles Esperados promedio por equipo en la temporada.</td>
+                                    </tr>
+                                    <tr>
+                                        <td><code>team_xGA</code></td>
+                                        <td>Goles Esperados Concedidos promedio por equipo en la temporada.</td>
+                                    </tr>
+                                    <tr>
+                                        <td><code>team_xPts</code></td>
+                                        <td>Puntos Esperados promedio por equipo en la temporada.</td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
         </div>
 
         <footer id="acerca" class="bg-dark text-white-50 py-4 mt-5">
-            <div>
+            <div class="container text-center">
                 <p class="mb-1">&copy; 2025 Dashboard de Análisis de Fútbol. Todos los derechos reservados.</p>
                 <p class="mb-0">Desarrollado con datos de código abierto y <a href="https://getbootstrap.com/"
                         class="text-white-50 text-decoration-none">Bootstrap</a>.</p>

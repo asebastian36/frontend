@@ -797,3 +797,13 @@ footer a:hover {
         right: 5px;
     }
 }
+
+/* Estilo para justificar el texto dentro de las listas de interpretación */
+.interpretation-list {
+    text-align: justify;
+}
+
+/* Estilo para justificar el texto dentro de las celdas de la tabla de glosario */
+.table-responsive td {
+    text-align: justify;
+}
